@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace SportBox7.Domain.Exeptions
+{
+    public class InvalidArticleException : Exception
+    {
+        public InvalidArticleException(string message)
+            :base(message)
+        {
+        }
+    }
+}
