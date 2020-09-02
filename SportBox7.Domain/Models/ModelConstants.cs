@@ -4,7 +4,24 @@ using System.Text;
 
 namespace SportBox7.Domain.Models
 {
-    class ModelConstants
+    public class ModelConstants
     {
+        public class Common
+        {
+            public const int MaxUrlLength = 2048;
+            public const int Zero = 0;
+        }
+
+        public class Article
+        {
+            
+        }
+
+        public class Source
+        {
+            
+        }
+
+       
     }
 }

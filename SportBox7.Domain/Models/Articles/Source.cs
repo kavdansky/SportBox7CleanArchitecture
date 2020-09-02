@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
+using static SportBox7.Domain.Models.ModelConstants.Common;
+using static SportBox7.Domain.Models.ModelConstants.Source;
+
 namespace SportBox7.Domain.Models.Articles
 {
     public class Source

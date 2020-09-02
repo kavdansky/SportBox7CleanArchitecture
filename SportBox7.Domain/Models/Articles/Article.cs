@@ -6,11 +6,10 @@ namespace SportBox7.Domain.Models.Articles
 {
     public class Article
     {
-        public int Id { get; set; }
-
-        public int? TempArticleId { get; set; }
 
         public string CreatorId { get; set; }
+
+        public string ModeratorId { get; set; }
 
         public DateTime CreationDate { get; set; }
 
