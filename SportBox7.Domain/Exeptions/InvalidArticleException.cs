@@ -4,11 +4,12 @@ using System.Text;
 
 namespace SportBox7.Domain.Exeptions
 {
-    public class InvalidArticleException : Exception
+    public class InvalidArticleException : BaseDomainException
     {
-        public InvalidArticleException(string message)
-            :base(message)
+        public InvalidArticleException()
         {
         }
+
+        public InvalidArticleException(string error) => this.Error = error;
     }
 }
