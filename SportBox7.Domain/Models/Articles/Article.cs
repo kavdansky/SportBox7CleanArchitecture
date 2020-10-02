@@ -4,18 +4,24 @@ using SportBox7.Domain.Exeptions;
 using System.Collections.Generic;
 using System.Text;
 using SportBox7.Domain.Models.Articles.Enums;
+using static SportBox7.Domain.Models.ModelConstants.Common;
+using static SportBox7.Domain.Models.ModelConstants.Article;
+using SportBox7.Data.Models;
+using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+using System.Linq;
 
 namespace SportBox7.Domain.Models.Articles
 {
     public class Article: EditableEntity<int>, IAggregateRoot
     {
+        private readonly HashSet<SocialSignal> socialSignals;
 
         internal Article(string title, string body, string h1Tag, string imageUrl, string seoUrl, string metaDescription, string metaKeywords, Category category, ArticleType articleType, DateTime targetDate)
         {
             this.Validate(title, body, h1Tag, imageUrl, metaKeywords, metaDescription);
            
             this.TargetDate = targetDate;
-            this.ArticleType = ArticleType.PeriodicArticle;           
+            this.ArticleType = articleType;           
             this.CreationDate = DateTime.Now;
             this.LastModDate = this.CreationDate;
             this.Title = title;
@@ -28,6 +34,29 @@ namespace SportBox7.Domain.Models.Articles
             this.Category = category;
             this.ArticleState = ArticleState.Draft;
             this.ArticleType = ArticleType;
+            this.socialSignals = new HashSet<SocialSignal>();
+        }
+
+        private Article(string title, string body, string h1Tag, string imageUrl, string seoUrl, string metaDescription, string metaKeywords)
+        {
+            this.Validate(title, body, h1Tag, imageUrl, metaKeywords, metaDescription);
+
+            this.CreationDate = DateTime.Now;
+            this.LastModDate = this.CreationDate;
+            this.Title = title;
+            this.Body = body;
+            this.H1Tag = h1Tag;
+            this.ImageUrl = imageUrl;
+            this.SeoUrl = seoUrl;
+            this.MetaKeywords = metaKeywords;
+            this.MetaDescription = metaDescription;
+            this.ArticleType = ArticleType;
+            this.socialSignals = new HashSet<SocialSignal>();
+
+            this.ArticleState = default!;
+            this.ArticleType = default!;
+            this.TargetDate = default!;
+            this.Category = default!;
         }
 
         private void Validate(string title, string body, string h1Tag, string imageUrl, string metaKeywords, string metaDescription)
@@ -63,6 +92,10 @@ namespace SportBox7.Domain.Models.Articles
         public ArticleState ArticleState { get; private set; }
 
         public ArticleType ArticleType { get; private set; }
+
+        public IReadOnlyCollection<SocialSignal> SocialSignals => this.socialSignals.ToList().AsReadOnly();
+
+
 
         public Article UpdateArticleState(ArticleState articleState)
         {
@@ -178,10 +211,8 @@ namespace SportBox7.Domain.Models.Articles
 
         private void ValidateMetaKeywords(string metaKeywords)
         {
-            byte min = 5;
-            byte max = 60;
             Validator.CheckForEmptyString<InvalidArticleException>(metaKeywords, "MetaDescription");
-            Validator.CheckStringLength<InvalidArticleException>(metaKeywords, min, max, "MetaDescription");
+            Validator.CheckStringLength<InvalidArticleException>(metaKeywords, MetatagsMinLength, MetatagsMaxLength, "MetaDescription");
         }
 
         private void ValidateImageUrl(string imageUrl)
@@ -192,34 +223,26 @@ namespace SportBox7.Domain.Models.Articles
 
         private void ValidateH1Tag(string h1Tag)
         {
-            byte min = 5;
-            byte max = byte.MaxValue;
             Validator.CheckForEmptyString<InvalidArticleException>(h1Tag, "H1Tag");
-            Validator.CheckStringLength<InvalidArticleException>(h1Tag, min, max, "H1Tag");
+            Validator.CheckStringLength<InvalidArticleException>(h1Tag, H1MinLength, H1MaxLength, "H1Tag");
         }
 
         private void ValidateBody(string body)
         {
-            ushort min = 5;
-            ushort max = ushort.MaxValue;
             Validator.CheckForEmptyString<InvalidArticleException>(body, "Body");
-            Validator.CheckStringLength<InvalidArticleException>(body, min, max, "Body");
+            Validator.CheckStringLength<InvalidArticleException>(body, BodyMinLength, BodyMaxLength, "Body");
         }
 
         private void ValidateTitle(string ArticleTitle)
         {
-            byte min = 5;
-            byte max = 60;
             Validator.CheckForEmptyString<InvalidArticleException>(ArticleTitle, "Title");
-            Validator.CheckStringLength<InvalidArticleException>(ArticleTitle, min, max, "Title");
+            Validator.CheckStringLength<InvalidArticleException>(ArticleTitle, TitleMinLength, TitleMaxLength, "Title");
         }
 
         private void ValidateMetaDescription(string metadescription)
         {
-            byte min = 5;
-            byte max = 60;
             Validator.CheckForEmptyString<InvalidArticleException>(metadescription, "metaDescription");
-            Validator.CheckStringLength<InvalidArticleException>(metadescription, min, max, "metaDescription");
+            Validator.CheckStringLength<InvalidArticleException>(metadescription, MetatagsMinLength, MetatagsMaxLength, "metaDescription");
         }
     }
 }

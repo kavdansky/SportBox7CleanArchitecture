@@ -10,7 +10,7 @@ using static SportBox7.Domain.Models.ModelConstants.Source;
 
 namespace SportBox7.Domain.Models.Articles
 {
-    public class Source
+    public class Source: Entity<int>
     {
         internal Source(string sourceName, string sourceUrl, string sourceImageUrl)
         {
@@ -74,7 +74,7 @@ namespace SportBox7.Domain.Models.Articles
         private void ValidateSourceName(string sourceName)
         {
             Validator.CheckForEmptyString<InvalidSourceException>(sourceName, "sourceName");
-            Validator.CheckStringLength<InvalidSourceException>(sourceName, 3, 60, "sourceName");
+            Validator.CheckStringLength<InvalidSourceException>(sourceName, SourceNameMinLength, SourceNameMaxLength, "sourceName");
         }
 
         public string SourceUrl { get; private set; } = default!;

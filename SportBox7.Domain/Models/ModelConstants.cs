@@ -10,16 +10,42 @@ namespace SportBox7.Domain.Models
         {
             public const int MaxUrlLength = 2048;
             public const int Zero = 0;
+            public const int MetatagsMinLength = 5;
+            public const int MetatagsMaxLength = 60;
         }
 
         public class Article
         {
-            
+            public const int TitleMinLength = 5;
+            public const int TitleMaxLength = 60;
+            public const int BodyMinLength = 5;
+            public const int BodyMaxLength = 11000;
+            public const int H1MinLength = 5;
+            public const int H1MaxLength = 60;
+        }
+
+        public class Editor
+        {
+            public const int NamesMinLength = 2;
+            public const int NamesMaxLength = 50;
         }
 
         public class Source
         {
-            
+            public const int SourceNameMinLength = 2;
+            public const int SourceNameMaxLength = 50;
+        }
+
+        public class Category
+        {
+            public const int NamesMinLength = 2;
+            public const int NamesMaxLength = 50;
+        }
+
+        public class SocialSignal
+        {
+            public const int MinIpLength = 7;
+            public const int MaxIpLength = 16;
         }
 
        

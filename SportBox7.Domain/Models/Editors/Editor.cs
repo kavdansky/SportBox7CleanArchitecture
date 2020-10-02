@@ -8,6 +8,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 
+using static SportBox7.Domain.Models.ModelConstants.Editor;
+
 namespace SportBox7.Domain.Models.Editors
 {
     public class Editor: Entity<string>, IAggregateRoot
@@ -40,13 +42,13 @@ namespace SportBox7.Domain.Models.Editors
         private void ValidateLastName(string lastName)
         {
             Validator.CheckForEmptyString<InvalidEditorException>(lastName, "lastName");
-            Validator.CheckStringLength<InvalidEditorException>(lastName, 3, 40, "lastName");
+            Validator.CheckStringLength<InvalidEditorException>(lastName, NamesMinLength, NamesMaxLength, "lastName");
         }
 
         private void ValidateFirstName(string firstName)
         {
             Validator.CheckForEmptyString<InvalidEditorException>(firstName, "firstName");
-            Validator.CheckStringLength<InvalidEditorException>(firstName, 3, 40, "firstName");
+            Validator.CheckStringLength<InvalidEditorException>(firstName, NamesMinLength, NamesMaxLength, "firstName");
         }
     }
 }

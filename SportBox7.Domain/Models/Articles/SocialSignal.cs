@@ -5,13 +5,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using SportBox7.Domain.Exeptions;
 
+using static SportBox7.Domain.Models.ModelConstants.SocialSignal;
+
 namespace SportBox7.Data.Models
 {
     public class SocialSignal: Entity<int>
     {
-        private const byte MinIpLength = 7;
-        private const byte MaxIpLength = 16;
-
+     
         internal SocialSignal(string visitorIp, bool isLiked)
         {
             this.ValidateVisitorIp(visitorIp);

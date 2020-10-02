@@ -5,20 +5,9 @@ using System.Text;
 
 namespace SportBox7.Domain.Models.Articles.Enums
 {
-    public class ArticleType: Enumeration
+    public enum ArticleType
     {
-        public static readonly ArticleType NewsArticle = new ArticleType(1, nameof(NewsArticle));
-        public static readonly ArticleType PeriodicArticle = new ArticleType(2, nameof(PeriodicArticle));
-        
-
-        private ArticleType(int value)
-            : this(value, FromValue<ArticleState>(value).Name)
-        {
-        }
-
-        private ArticleType(int value, string name)
-            : base(value, name)
-        {
-        }
+        NewsArticle = 1, 
+        PeriodicArticle = 2
     }
 }
