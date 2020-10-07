@@ -5,7 +5,8 @@ using System.Text;
 
 namespace SportBox7.Domain.Common
 {
-    public abstract class EditableEntity<TKey> : Entity<TKey>, IEditableEntity
+    public abstract class EditableEntity<TId> : Entity<TId>, IEditableEntity
+        where TId : struct
     {
         public DateTime CreationDate { get; set; }
 

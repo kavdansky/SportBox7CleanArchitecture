@@ -1,7 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SportBox7.Data.Models;
 using SportBox7.Domain.Models.Articles;
 using SportBox7.Domain.Models.Editors;
+using SportBox7.Infrastructure.Identity;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -9,7 +11,7 @@ using System.Text;
 
 namespace SportBox7.Infrastructure.Persistence
 {
-    internal class SportBox7DbContext: DbContext
+    internal class SportBox7DbContext: IdentityDbContext<User>
     {
         public SportBox7DbContext(DbContextOptions<SportBox7DbContext> options)
             :base(options)

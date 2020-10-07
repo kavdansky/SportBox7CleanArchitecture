@@ -26,19 +26,19 @@ namespace SportBox7.Domain.Models
 
         public class Editor
         {
-            public const int NamesMinLength = 2;
+            public const int NamesMinLength = 3;
             public const int NamesMaxLength = 50;
         }
 
         public class Source
         {
-            public const int SourceNameMinLength = 2;
+            public const int SourceNameMinLength = 3;
             public const int SourceNameMaxLength = 50;
         }
 
         public class Category
         {
-            public const int NamesMinLength = 2;
+            public const int NamesMinLength = 3;
             public const int NamesMaxLength = 50;
         }
 

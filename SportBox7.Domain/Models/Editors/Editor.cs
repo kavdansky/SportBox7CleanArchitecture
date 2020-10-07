@@ -12,7 +12,7 @@ using static SportBox7.Domain.Models.ModelConstants.Editor;
 
 namespace SportBox7.Domain.Models.Editors
 {
-    public class Editor: Entity<string>, IAggregateRoot
+    public class Editor: Entity<int>, IAggregateRoot
     {
         private readonly HashSet<Article> articles;
 

@@ -22,19 +22,6 @@ namespace SportBox7.Domain.Models.Articles
         }
 
         [Fact]
-        public void UpdateArticleTitleWithNullShouldThrowException()
-        {
-            //Arrange
-            Article article = A.Dummy<Article>();
-
-            //Act
-            Action act = ()=> article.UpdateTitle(null);
-
-            //Assert
-            act.Should().Throw<InvalidArticleException>();
-        }
-
-        [Fact]
         public void UpdateArticleTitleWithInvalidStringShouldThrowException()
         {
             //Arrange
@@ -58,19 +45,6 @@ namespace SportBox7.Domain.Models.Articles
 
             //Assert
             article.Title.Should().Equals("Unique title");           
-        }
-
-        [Fact]
-        public void UpdateBodyTitleWithNullShouldThrowException()
-        {
-            //Arrange
-            Article article = A.Dummy<Article>();
-
-            //Act
-            Action act = () => article.UpdateBody(null);
-
-            //Assert
-            act.Should().Throw<InvalidArticleException>();
         }
 
         [Fact]
@@ -100,19 +74,6 @@ namespace SportBox7.Domain.Models.Articles
         }
 
         [Fact]
-        public void UpdateH1TagWithNullShouldThrowException()
-        {
-            //Arrange
-            Article article = A.Dummy<Article>();
-
-            //Act
-            Action act = () => article.UpdateH1Tag(null);
-
-            //Assert
-            act.Should().Throw<InvalidArticleException>();
-        }
-
-        [Fact]
         public void UpdateH1TagWithInvalidStringShouldThrowException()
         {
             //Arrange
@@ -136,19 +97,6 @@ namespace SportBox7.Domain.Models.Articles
 
             //Assert
             article.Title.Should().Equals("Unique title");
-        }
-
-        [Fact]
-        public void UpdateImageUrlWithNullShouldThrowException()
-        {
-            //Arrange
-            Article article = A.Dummy<Article>();
-
-            //Act
-            Action act = () => article.UpdateImageUrl(null);
-
-            //Assert
-            act.Should().Throw<InvalidArticleException>();
         }
 
         [Fact]
@@ -178,19 +126,6 @@ namespace SportBox7.Domain.Models.Articles
         }
 
         [Fact]
-        public void UpdateSeoUrlWithNullShouldThrowException()
-        {
-            //Arrange
-            Article article = A.Dummy<Article>();
-
-            //Act
-            Action act = () => article.UpdateSeoUrl(null);
-
-            //Assert
-            act.Should().Throw<InvalidArticleException>();
-        }
-
-        [Fact]
         public void UpdateSeoUrlWithInvalidUrlShouldThrowException()
         {
             //Arrange
@@ -217,19 +152,6 @@ namespace SportBox7.Domain.Models.Articles
         }
 
         [Fact]
-        public void UpdateMetaDescriptionWithNullShouldThrowException()
-        {
-            //Arrange
-            Article article = A.Dummy<Article>();
-
-            //Act
-            Action act = () => article.UpdateMetaDescription(null);
-
-            //Assert
-            act.Should().Throw<InvalidArticleException>();
-        }
-
-        [Fact]
         public void UpdateMetaDescriptionWithInvalidStringShouldThrowException()
         {
             //Arrange
@@ -253,19 +175,6 @@ namespace SportBox7.Domain.Models.Articles
 
             //Assert
             article.Title.Should().Equals("Unique title");
-        }
-
-        [Fact]
-        public void UpdateMetaKeywordsWithNullShouldThrowException()
-        {
-            //Arrange
-            Article article = A.Dummy<Article>();
-
-            //Act
-            Action act = () => article.UpdateMetaKeywords(null);
-
-            //Assert
-            act.Should().Throw<InvalidArticleException>();
         }
 
         [Fact]

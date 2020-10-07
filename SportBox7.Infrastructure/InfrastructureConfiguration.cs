@@ -6,6 +6,8 @@
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.IdentityModel.Tokens;
     using Persistence;
+    using SportBox7.Application.Contracts;
+    using SportBox7.Infrastructure.Persistence.Repositories;
 
     public static class InfrastructureConfiguration
     {
@@ -25,7 +27,8 @@
                         sqlServer => sqlServer
                             .MigrationsAssembly(typeof(SportBox7DbContext)
                                 .Assembly.FullName)))
-            .AddTransient<IInitializer, SportBox7DbInitializer>();
-        
+            .AddTransient<IInitializer, SportBox7DbInitializer>()
+            .AddTransient(typeof(IRepository<>), typeof(DataRepository<>));
+
     }
 }

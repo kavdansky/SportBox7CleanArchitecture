@@ -10,22 +10,7 @@ namespace SportBox7.Domain.Models.Articles
 {
     public class SourceSpecs
     {
-        [Fact]
-        public void UpdateSourceNameWithNullShouldThrowException()
-        {
-            //Arrange
-            Source source = new Source(
-                    "Gong.bg",
-                    "http://gong.bg",
-                    "http://gong.bg/images"
-                    );
-
-            //Act
-            Action act = () => source.UpdateSourceName(null);
-
-            //Assert
-            act.Should().Throw<InvalidSourceException>();
-        }
+       
 
         [Fact]
         public void UpdateSourceNameWithInvalidStringShouldThrowException()
@@ -96,23 +81,6 @@ namespace SportBox7.Domain.Models.Articles
         }
 
         [Fact]
-        public void UpdateSourceUrlWithNullShouldThrowException()
-        {
-            //Arrange
-            Source source = new Source(
-                    "Gong.bg",
-                    "http://gong.bg",
-                    "http://gong.bg/images"
-                    );
-
-            //Act
-            Action act = () => source.UpdateSourceUrl(null);
-
-            //Assert
-            act.Should().Throw<InvalidSourceException>();
-        }
-
-        [Fact]
         public void UpdateSourceImageUrlWithValidUrlShouldNotThrowException()
         {
             //Arrange
@@ -145,24 +113,5 @@ namespace SportBox7.Domain.Models.Articles
             //Assert
             act.Should().Throw<InvalidSourceException>();
         }
-
-        [Fact]
-        public void UpdateSourceImageUrlWithNullShouldThrowException()
-        {
-            //Arrange
-            Source source = new Source(
-                    "Gong.bg",
-                    "http://gong.bg",
-                    "http://gong.bg/images"
-                    );
-
-            //Act
-            Action act = () => source.UpdateSourceImageUrl(null);
-
-            //Assert
-            act.Should().Throw<InvalidSourceException>();
-        }
-
-
     }
 }

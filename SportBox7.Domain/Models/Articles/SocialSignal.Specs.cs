@@ -29,16 +29,5 @@ namespace SportBox7.Domain.Models.Articles
             act.Should().NotThrow<InvalidSocialSignalException>();
             //Assert
         }
-
-        [Fact]
-        public void CreateObjectWithNullIpShouldNotThrowException()
-        {
-            //Arrange and Act
-            Action act = () => new SocialSignal(null, false);
-
-            act.Should().Throw<InvalidSocialSignalException>();
-            //Assert
-        }
-
     }
 }

@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SportBox7.Application;
 using SportBox7.Domain;
 using SportBox7.Infrastructure;
 
@@ -28,6 +29,7 @@ namespace SportBox7.Startup
         public void ConfigureServices(IServiceCollection services)
             => services
                 .AddDomain()
+                .AddApplication(this.Configuration)
                 .AddInfrastructure(this.Configuration)         
                 .AddControllers()
             ;
@@ -44,6 +46,8 @@ namespace SportBox7.Startup
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseAuthorization();
 
             app.UseAuthorization();
 
