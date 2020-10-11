@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using SportBox7.Application;
 using SportBox7.Domain;
 using SportBox7.Infrastructure;
+using SportBox7.Web;
 
 namespace SportBox7.Startup
 {
@@ -20,20 +21,23 @@ namespace SportBox7.Startup
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            this.Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-            => services
-                .AddDomain()
-                .AddApplication(this.Configuration)
-                .AddInfrastructure(this.Configuration)         
-                .AddControllers()
-            ;
-       
+        {
+            services.AddDomain();
+            services.AddApplication(this.Configuration);
+            services.AddInfrastructure(this.Configuration);
+            services.AddWebComponents();
+        }
+
+        
+
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -43,20 +47,19 @@ namespace SportBox7.Startup
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-
-            app.Initialize();
+            app
+                //.UseValidationExceptionHandler()
+                .UseHttpsRedirection()
+                .UseRouting()
+                .UseCors(options => options
+                    .AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod())
+                .UseAuthentication()
+                .UseAuthorization()
+                .UseEndpoints(endpoints => endpoints
+                    .MapControllers())
+                .Initialize();
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SportBox7.Application.Features.Identity
+namespace SportBox7.Application.Features.Identity.LoginUser
 {
     public class LoginOutputModel
     {

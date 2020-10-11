@@ -1,10 +1,19 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SportBox7.Web
 {
-    class WebConfiguration
+    public static class WebConfiguration
     {
+        public static IServiceCollection AddWebComponents(this IServiceCollection services)
+        {
+            services
+                .AddControllers()
+                .AddNewtonsoftJson();
+
+            return services;
+        }
     }
 }

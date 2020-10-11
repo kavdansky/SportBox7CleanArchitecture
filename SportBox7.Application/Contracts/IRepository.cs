@@ -8,8 +8,6 @@
     public interface IRepository<out TEntity>
         where TEntity : IAggregateRoot
     {
-        IQueryable<TEntity> All();
-
-        Task<int> Save(CancellationToken cancellationToken = default);
+        
     }
 }

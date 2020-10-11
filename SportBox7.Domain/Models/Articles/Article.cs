@@ -83,7 +83,7 @@ namespace SportBox7.Domain.Models.Articles
 
         public string SeoUrl { get; private set; } = default!;
 
-        public Source Source { get; private set; } = default!;
+        public Source? Source { get; private set; }
 
         public Category Category { get; private set; }
        

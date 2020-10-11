@@ -6,30 +6,23 @@
     using Application.Contracts;
     using Domain.Common;
 
-    internal class DataRepository<TEntity> : IRepository<TEntity>
+    internal abstract class DataRepository<TEntity> : IRepository<TEntity>
         where TEntity : class, IAggregateRoot
     {
-        public DataRepository(SportBox7DbContext db) => this.Data = db;
+        private readonly SportBox7DbContext db;
 
-        protected SportBox7DbContext Data { get; }
+        protected DataRepository(SportBox7DbContext db) => this.db = db;
+
 
         public async Task Save(
             TEntity entity,
             CancellationToken cancellationToken = default)
         {
-            this.Data.Update(entity);
+            this.db.Update(entity);
 
-            await this.Data.SaveChangesAsync(cancellationToken);
+            await this.db.SaveChangesAsync(cancellationToken);
         }
 
-        public Task<int> Save(CancellationToken cancellationToken = default)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        IQueryable<TEntity> IRepository<TEntity>.All()
-        {
-            return this.Data.Set<TEntity>();
-        }
+        protected IQueryable<TEntity> All() => this.db.Set<TEntity>();
     }
 }

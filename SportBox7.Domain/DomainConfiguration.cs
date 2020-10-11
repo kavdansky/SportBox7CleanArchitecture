@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
+using SportBox7.Domain.Common;
 using SportBox7.Domain.Factories;
+using SportBox7.Domain.Models.Articles;
 
 namespace SportBox7.Domain
 {
@@ -15,6 +17,8 @@ namespace SportBox7.Domain
                     .AddClasses(classes => classes
                         .AssignableTo(typeof(IFactory<>)))
                     .AsMatchingInterface()
-                    .WithTransientLifetime());
+                    .WithTransientLifetime())
+            .AddTransient<IInitialData, CategoryData>()
+            .AddTransient<IInitialData, ArticleData>();
     }
 }

@@ -13,6 +13,7 @@
     using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
     using SportBox7.Application.Common;
+    using SportBox7.Application.Features.Identity.LoginUser;
 
     public class IdentityService : IIdentity
     {

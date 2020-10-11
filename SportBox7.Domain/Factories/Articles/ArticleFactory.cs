@@ -105,9 +105,14 @@ namespace SportBox7.Domain.Factories.Articles
 
         public Article Build()
         {
-            if (isTitleSet! || isBodyset! || isH1TagSet! || isImageUrlSet! && isSeoUrlSet! || isMetaDescriptionSet! || isMetaKeywordsSet! || isCategorySet! || isArticleTypeSet! || isTargetDateSet!)
+            if (isArticleTypeSet && articleType == ArticleType.PeriodicArticle && isTargetDateSet!)
             {
-                throw new InvalidArticleException("Title, Body, H1Tag, ImageUrl, SeoUrl, MetaDescription, MetaKeywords, Category, Article and Target Date must have value!");
+                throw new InvalidArticleException("Periodic Articles must have Target Date ");
+            }
+            else if (isTitleSet! || isBodyset! || isH1TagSet! || isImageUrlSet! && isSeoUrlSet! || isMetaDescriptionSet! || isMetaKeywordsSet! || isCategorySet! || isArticleTypeSet!)
+            {
+                
+                throw new InvalidArticleException("Title, Body, H1Tag, ImageUrl, SeoUrl, MetaDescription, MetaKeywords, Category and Article must have value!");
             }
 
             return new Article(this.title, this.body, this.h1Tag, this.imageUrl, this.seoUrl, this.metaDescription, this.metaKeywords, this.category, this.articleType, this.targetDate);
