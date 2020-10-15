@@ -1,11 +1,11 @@
 ﻿namespace SportBox7.Infrastructure
 {
     using System;
-    using Application.Features.CarAds;
     using FluentAssertions;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.DependencyInjection;
     using Persistence;
+    using SportBox7.Application.Features.Articles;
     using Xunit;
 
     public class InfrastructureConfigurationSpecs

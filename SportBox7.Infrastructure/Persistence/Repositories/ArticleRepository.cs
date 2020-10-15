@@ -8,7 +8,7 @@
     using Application.Features.Articles.Queries.Search;
     using Domain.Models.Articles;
     using Microsoft.EntityFrameworkCore;
-    using SportBox7.Application.Features.CarAds;
+    using SportBox7.Application.Features.Articles;
     using SportBox7.Application.Features.Queries.Search;
 
     internal class ArticleRepository : DataRepository<Article>, IArticleRepository
@@ -29,7 +29,8 @@
                 query = query
                     .Where(article => EF
                         .Functions
-                        .Like(article.Category.CategoryNameEN, $"%{category}%"));
+                        .Like(article.Category.CategoryNameEN, $"%{category}%"))
+                    .OrderBy(cr=> cr.CreationDate);
             }
 
             return await query
@@ -41,6 +42,13 @@
                     art.Category.CategoryName))
                 .ToListAsync(cancellationToken);
         }
+
+        public async Task<Category> GetCategory(
+            int categoryId,
+            CancellationToken cancellationToken = default)
+            =>  await this.db
+                .Categories
+                .FirstOrDefaultAsync(c => c.Id == categoryId, cancellationToken);
 
         public async Task<int> Total(CancellationToken cancellationToken = default)
             => await this

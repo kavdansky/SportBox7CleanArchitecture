@@ -12,6 +12,10 @@ namespace SportBox7.Domain.Models
             public const int Zero = 0;
             public const int MetatagsMinLength = 5;
             public const int MetatagsMaxLength = 60;
+            public const int MinEmailLength = 3;
+            public const int MaxEmailLength = 50;
+            public const int MinNameLength = 3;
+            public const int MaxNameLength = 50;
         }
 
         public class Article
@@ -47,7 +51,5 @@ namespace SportBox7.Domain.Models
             public const int MinIpLength = 7;
             public const int MaxIpLength = 16;
         }
-
-       
     }
 }

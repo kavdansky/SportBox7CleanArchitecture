@@ -13,7 +13,8 @@
     using Microsoft.Extensions.Options;
     using Microsoft.IdentityModel.Tokens;
     using SportBox7.Application.Common;
-    using SportBox7.Application.Features.Identity.LoginUser;
+    using SportBox7.Application.Features.Identity.Commands;
+    using SportBox7.Application.Features.Identity.Commands.LoginUser;
 
     public class IdentityService : IIdentity
     {
@@ -30,20 +31,8 @@
             this.applicationSettings = applicationSettings.Value;
         }
 
-        public async Task<Result> Register(UserInputModel userInput)
-        {
-            var user = new User(userInput.Email);
 
-            var identityResult = await this.userManager.CreateAsync(user, userInput.Password);
-
-            var errors = identityResult.Errors.Select(e => e.Description);
-
-            return identityResult.Succeeded
-                ? Result.Success
-                : Result.Failure(errors);
-        }
-
-        public async Task<Result<LoginOutputModel>> Login(UserInputModel userInput)
+        public async Task<Result<LoginSuccessModel>> Login(UserInputModel userInput)
         {
             var user = await this.userManager.FindByEmailAsync(userInput.Email);
             if (user == null)
@@ -61,7 +50,20 @@
                 user.Id,
                 user.Email);
 
-            return new LoginOutputModel(token);
+            return new LoginSuccessModel(user.Id, token);
+        }
+
+        public async Task<Result<IUser>> Register(UserInputModel userInput)
+        {
+            var user = new User(userInput.Email);
+
+            var identityResult = await this.userManager.CreateAsync(user, userInput.Password);
+
+            var errors = identityResult.Errors.Select(e => e.Description);
+
+            return identityResult.Succeeded
+                ? Result<IUser>.SuccessWith(user)
+                : Result<IUser>.Failure(errors);
         }
 
         private string GenerateJwtToken(string userId, string email)

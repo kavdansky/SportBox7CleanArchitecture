@@ -9,7 +9,7 @@
     internal abstract class DataRepository<TEntity> : IRepository<TEntity>
         where TEntity : class, IAggregateRoot
     {
-        private readonly SportBox7DbContext db;
+        protected readonly SportBox7DbContext db;
 
         protected DataRepository(SportBox7DbContext db) => this.db = db;
 

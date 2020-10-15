@@ -18,7 +18,6 @@ namespace SportBox7.Domain
                         .AssignableTo(typeof(IFactory<>)))
                     .AsMatchingInterface()
                     .WithTransientLifetime())
-            .AddTransient<IInitialData, CategoryData>()
             .AddTransient<IInitialData, ArticleData>();
     }
 }

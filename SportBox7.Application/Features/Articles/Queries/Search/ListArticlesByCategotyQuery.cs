@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using SportBox7.Application.Features.CarAds;
 using SportBox7.Application.Features.Queries.Search;
 using System;
 using System.Collections.Generic;
