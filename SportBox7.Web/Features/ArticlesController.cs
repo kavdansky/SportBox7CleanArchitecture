@@ -13,6 +13,8 @@ using SportBox7.Domain.Factories.Editors;
 using SportBox7.Domain.Models.Articles;
 using SportBox7.Domain.Models.Editors;
 using SportBox7.Web.Common;
+using SportBox7.Application.Features.Articles.Commands.Create;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SportBox7.Web.Features
 {
@@ -22,13 +24,14 @@ namespace SportBox7.Web.Features
     {
         
         [HttpGet]
-        public async Task<SearchArticleOutputModel> Search(
-           [FromQuery] ListArticlesByCategotyQuery query)
+        public async Task<ActionResult<SearchArticleOutputModel>> Get(
+             [FromQuery] ListArticlesByCategotyQuery query)
            => (SearchArticleOutputModel)await this.Mediator.Send(query);
 
-       // [HttpGet]
-       // public async Task<ActionResult<SearchArticleOutputModel>> Get(
-       //      [FromQuery] ListArticlesByCategotyQuery query)
-       //    => (SearchArticleOutputModel)await this.Mediator.Send(query);
+        [HttpPost]
+        [Authorize]
+        public async Task<ActionResult<CreateArticleOutputModel>> Create(
+            CreateArticleCommand command)
+            => await this.Send(command);
     }
 }

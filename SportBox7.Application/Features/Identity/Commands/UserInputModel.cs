@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SportBox7.Application.Features.Identity.Commands
 {
-    public class UserInputModel
+    public abstract class UserInputModel
     {
-        public string Email { get; } = default!;
-        public string Password { get; } = default!;
+        public string Email { get; set; } = default!;
+        public string Password { get; set; } = default!;
     }
 }

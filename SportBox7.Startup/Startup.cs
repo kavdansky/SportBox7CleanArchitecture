@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Logging;
 using SportBox7.Application;
 using SportBox7.Domain;
 using SportBox7.Infrastructure;
@@ -45,6 +46,7 @@ namespace SportBox7.Startup
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                IdentityModelEventSource.ShowPII = true;
             }
 
             app

@@ -11,14 +11,10 @@ namespace SportBox7.Domain.Factories.Editors
         private string firstName = default!;
         private string lastName = default!;
 
-        private bool isFirstNameSet = false;
-        private bool isLastNameSet = false;
-
-
+        
         public IEditorFactory WithFirstName(string firstName)
         {
             this.firstName = firstName;
-            this.isFirstNameSet = true;
 
             return this;
         }
@@ -26,18 +22,12 @@ namespace SportBox7.Domain.Factories.Editors
         public IEditorFactory WithLastName(string lastName)
         {
             this.lastName = lastName;
-            this.isFirstNameSet = true;
 
             return this;
         }
 
         public Editor Build()
         {
-            if (this.isFirstNameSet! || this.isLastNameSet! )
-            {
-                throw new InvalidEditorException("FirstName and LastName must have values!");
-            }
-
             return new Editor(this.firstName, this.lastName);
         }
 

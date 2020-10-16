@@ -20,16 +20,16 @@ namespace SportBox7.Domain.Factories.Articles
         private ArticleType articleType = default!;
         private DateTime targetDate = default!;
 
-        private bool isTitleSet = false;
-        private bool isBodyset = false;
-        private bool isH1TagSet = false;
-        private bool isImageUrlSet = false;
-        private bool isSeoUrlSet = false;
-        private bool isMetaDescriptionSet = false;
-        private bool isMetaKeywordsSet = false;
-        private bool isCategorySet = false;
-        private bool isArticleTypeSet = false;
-        private bool isTargetDateSet = false;
+        private bool isTitleSet;
+        private bool isBodyset;
+        private bool isH1TagSet;
+        private bool isImageUrlSet;
+        private bool isSeoUrlSet;
+        private bool isMetaDescriptionSet;
+        private bool isMetaKeywordsSet;
+        private bool isCategorySet;
+        private bool isArticleTypeSet;
+        private bool isTargetDateSet;
 
 
 
@@ -109,7 +109,7 @@ namespace SportBox7.Domain.Factories.Articles
             {
                 throw new InvalidArticleException("Periodic Articles must have Target Date ");
             }
-            else if (isTitleSet! || isBodyset! || isH1TagSet! || isImageUrlSet! && isSeoUrlSet! || isMetaDescriptionSet! || isMetaKeywordsSet! || isCategorySet! || isArticleTypeSet!)
+            if (isTitleSet== false || isBodyset == false || isH1TagSet == false || isImageUrlSet == false || isSeoUrlSet == false || isMetaDescriptionSet== false || isMetaKeywordsSet == false || isCategorySet == false || isArticleTypeSet == false)
             {
                 
                 throw new InvalidArticleException("Title, Body, H1Tag, ImageUrl, SeoUrl, MetaDescription, MetaKeywords, Category and Article must have value!");

@@ -39,20 +39,5 @@ namespace SportBox7.Domain.Factories.Editors
             act.Should().Throw<InvalidEditorException>();
         }
 
-        [Fact]
-        public void BuildShouldNotThrowExceptionIfEverythingIsSet()
-        {
-            // Assert
-            var editorFactory = new EditorFactory();
-
-            // Act
-            Action act = () => editorFactory
-                .WithFirstName("Petar")
-                .WithLastName("Ivanov")
-                .Build();
-
-            // Assert
-            act.Should().Throw<InvalidEditorException>();
-        }
     }
 }

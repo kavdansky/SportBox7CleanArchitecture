@@ -21,7 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Articles\Commands\" />
     <Folder Include="Features\Editors\Commands\" />
   </ItemGroup>
 
