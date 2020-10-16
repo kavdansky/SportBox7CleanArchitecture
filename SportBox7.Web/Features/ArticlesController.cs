@@ -24,8 +24,8 @@ namespace SportBox7.Web.Features
     {
         
         [HttpGet]
-        public async Task<ActionResult<SearchArticleOutputModel>> Get(
-             [FromQuery] ListArticlesByCategotyQuery query)
+        public async Task<ActionResult<SearchArticleOutputModel>> Search(
+             [FromQuery] ListArticlesByCategoryQuery query)
            => (SearchArticleOutputModel)await this.Mediator.Send(query);
 
         [HttpPost]

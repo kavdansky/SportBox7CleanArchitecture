@@ -39,7 +39,7 @@
                     art.Title,
                     art.Body,
                     art.ImageUrl,
-                    art.Category.CategoryName))
+                    art.Category.CategoryNameEN))
                 .ToListAsync(cancellationToken);
         }
 

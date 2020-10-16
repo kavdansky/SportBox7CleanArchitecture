@@ -194,51 +194,5 @@ namespace SportBox7.Domain.Factories.Articles
             // Assert
             act.Should().Throw<InvalidArticleException>();
         }
-
-        [Fact]
-        public void BuildNewsArticleShouldNotThrowExceptionIfTargetDateIsNotSet()
-        {
-            // Assert
-            var articleFactory = new ArticleFactory();
-
-            // Act
-            Action act = () => articleFactory
-                .WithArticleType(ArticleType.NewsArticle)
-                .WithBody("Test Body body")
-                .WithCategory("Футбол", "Football")
-                .WithH1Tag("Test H1 tag")
-                .WithImageUrl("https://imgurl")
-                .WithMetaDescription("test meta descr")
-                .WithMetaKeywords("Meta keywords test")
-                .WithSeoUrl("https://seourl")
-                .WithTitle("Test title")
-                .Build();
-
-            // Assert
-            act.Should().Throw<InvalidArticleException>();
-        }
-
-        [Fact]
-        public void BuildPeriodicArticleShouldThrowExceptionIfTargetDateIsNotSet()
-        {
-            // Assert
-            var articleFactory = new ArticleFactory();
-
-            // Act
-            Action act = () => articleFactory
-                .WithArticleType(ArticleType.PeriodicArticle)
-                .WithBody("Test Body body")
-                .WithCategory("Футбол", "Football")
-                .WithH1Tag("Test H1 tag")
-                .WithImageUrl("https://imgurl")
-                .WithMetaDescription("test meta descr")
-                .WithMetaKeywords("Meta keywords test")
-                .WithSeoUrl("https://seourl")
-                .WithTitle("Test title")
-                .Build();
-
-            // Assert
-            act.Should().Throw<InvalidArticleException>();
-        }
     }
 }

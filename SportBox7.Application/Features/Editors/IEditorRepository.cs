@@ -16,7 +16,7 @@ namespace SportBox7.Application.Features.Editors
 
         Task<int> GetEditorId(string userId, CancellationToken cancellationToken = default);
 
-        Task<bool> HasArticle(int dealerId, int carAdId, CancellationToken cancellationToken = default);
+        Task<bool> HasArticle(int dealerId, int articleId, CancellationToken cancellationToken = default);
 
         Task<EditorDetailsOutputModel> GetDetails(int id, CancellationToken cancellationToken = default);
 

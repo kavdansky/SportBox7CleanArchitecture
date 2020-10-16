@@ -6,13 +6,13 @@
 
     public class EditorDetailsOutputModel : EditorOutputModel
     {
-        public int TotalCarAds { get; private set; }
+        public int TotalArticles { get; private set; }
 
         public override void Mapping(Profile mapper)
             => mapper
                 .CreateMap<Editor, EditorDetailsOutputModel>()
                 .IncludeBase<Editor, EditorOutputModel>()
-                .ForMember(d => d.TotalCarAds, cfg => cfg
+                .ForMember(d => d.TotalArticles, cfg => cfg
                     .MapFrom(d => d.Articles.Count));
     }
 }

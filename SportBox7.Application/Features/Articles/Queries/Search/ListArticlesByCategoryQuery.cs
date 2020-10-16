@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace SportBox7.Application.Features.Articles.Queries.Search
 {
-    public class ListArticlesByCategotyQuery : IRequest<SearchArticleOutputModel>
+    public class ListArticlesByCategoryQuery : IRequest<SearchArticleOutputModel>
     {
         public string? Category { get; set; }
 
-        public class ListArticleByCategotyHandler : IRequestHandler<ListArticlesByCategotyQuery, SearchArticleOutputModel>
+        public class ListArticleByCategotyHandler : IRequestHandler<ListArticlesByCategoryQuery, SearchArticleOutputModel>
         {
             private readonly IArticleRepository articleRepository;
 
@@ -21,7 +21,7 @@ namespace SportBox7.Application.Features.Articles.Queries.Search
                 this.articleRepository = repository;
            
 
-            public async Task<SearchArticleOutputModel> Handle(ListArticlesByCategotyQuery request, CancellationToken cancellationToken)
+            public async Task<SearchArticleOutputModel> Handle(ListArticlesByCategoryQuery request, CancellationToken cancellationToken)
             {
                 var articleList = await this.articleRepository.GetArticleListingsByCategory(request.Category);
                 

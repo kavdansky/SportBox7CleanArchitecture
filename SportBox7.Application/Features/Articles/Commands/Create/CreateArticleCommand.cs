@@ -13,14 +13,14 @@ namespace SportBox7.Application.Features.Articles.Commands.Create
 {
     public class CreateArticleCommand : ArticleCommand<CreateArticleCommand>, IRequest<CreateArticleOutputModel>
     {
-        public class CreateCarAdCommandHandler : IRequestHandler<CreateArticleCommand, CreateArticleOutputModel>
+        public class CreateCreateArticleCommandHandler : IRequestHandler<CreateArticleCommand, CreateArticleOutputModel>
         {
             private readonly ICurrentUser currentUser;
             private readonly IEditorRepository editorRepository;
             private readonly IArticleRepository articleRepository;
             private readonly IArticleFactory articleFactory;
 
-            public CreateCarAdCommandHandler(
+            public CreateCreateArticleCommandHandler(
                 ICurrentUser currentUser,
                 IEditorRepository editorRepository,
                 IArticleRepository articleRepository,
