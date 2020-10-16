@@ -1,0 +1,50 @@
+﻿Lists all articles by CreationDate 
+Default Url:
+http://localhost:57785/articles
+
+Lists articles by Category
+Url: http://localhost:57785/Articles?category=football
+
+Register new user
+Url: http://localhost:57785/Identity/Register
+
+Register new user object:
+{
+"Email": "restmasim@mail.bg",  
+"Password":"Pertyu1!",
+"FirstName": "Ivan",
+"LastName": "Ivanov" 
+}
+
+Login user
+Url http://localhost:57785/Identity/Login
+
+Returns EditirId and {token}
+
+login object:
+{
+"Email": "restmasim@mail.bg",  
+"Password":"Pertyu1!"
+}
+
+
+Add new Article/Only For Logged in users:
+Url to add new article:
+http://localhost:57785/Articles?Create
+
+Authorization:
+Bearer Token: {your token}
+
+Add new Article object:
+{
+    "Body": "Body must not be empty.",
+    "H1Tag": "H1 Tag' must not be empty.",
+    "Title": "Title must not be empty.",
+    "SeoUrl": "https://img/im.bg",
+    "Category": "16",
+    "ImageUrl": "https://img/im.bg",
+    "TargetDate": "2008/2/2",
+    "ArticleType": "1",
+    "MetaKeywords": "Meta Keywords must not be empty.",
+    "MetaDescription": "Meta Description must not be empty."
+}
